@@ -19,6 +19,7 @@ A simple Windows Forms application built in **C#** where users can type a questi
 - .NET Framework / .NET 6+ (depending on your project setup)
 - Visual Studio (or any C# IDE)
 - OpenAI API key ([Get one here](https://platform.openai.com/))
+- add the api key in the config.xml file , also in the app.config 
 
 ---
 
