@@ -54,56 +54,14 @@ namespace ASKBOT
                 GenAnswer_TextBox.Text = result ;
             }
         }
-        /*
-        private async Task<string> GetresponseFromAPI(string prompt )
-        {
-            var url =  "https://api.openai.com/v1/chat/completions";
-
-            var requestbody = new
-            {
-                model = "gpt-3.5-turbo",
-                messages = new[] {new { role = "user", content = prompt } } 
-
-            };
-
-               //converts the C# object to a JSON string ------ open ai API expects JSON format only 
-            var requestJson = JsonConvert.SerializeObject(requestbody);
-
-                    // Create the HttpRequestMessage with the specified URL and method
-            var requesthttp = new HttpRequestMessage(HttpMethod.Post, url);
-
-            requesthttp.Headers.Add("Authorization", $"Bearer {apiKey}");
-
-            requesthttp.Content = new StringContent(requestJson, Encoding.UTF8, "application/json");
-
-            //send the request and get the response
-            var response = await client.SendAsync(requesthttp);
-            var responseJson = await response.Content.ReadAsStringAsync();
-
-            //extract the content from the response JSON
-            dynamic responseObject = JsonConvert.DeserializeObject(responseJson);
-            return responseObject.choices[0].message.content;
-
-
-
-            /*var answer = responseObject?.choices?[0]?.message?.content;
-
-            if (answer == null)
-            {
-                MessageBox.Show("No answer returned. Check the API response or request format.");
-                
-            }
-            return answer?.ToString() ?? "No answer returned.";
-        }
-        */
-
+   
         private async Task<string> GetresponseFromAPI(string prompt)
         {
             var requestBody = new
             {
                 model = "gpt-3.5-turbo",
                 messages = new[] {
-                    new { role = "system", content = "You are a helpful assistsnt " },
+                    new { role = "system", content = "You are a helpful assistsnt , kindly answer the question above !! : " },
                     new { role = "user", content = prompt }
                 } ,
                 n=2
@@ -111,7 +69,7 @@ namespace ASKBOT
 
             var requestJson = JsonConvert.SerializeObject(requestBody);
             var requestHttp = new HttpRequestMessage(HttpMethod.Post, apiUrl);
-            requestHttp.Headers.Add("Authorization", $"Bearer {apiKey}"); // ✅ Fixed space
+            requestHttp.Headers.Add("Authorization", $"Bearer {apiKey}"); 
             requestHttp.Content = new StringContent(requestJson, Encoding.UTF8, "application/json");
 
             try
@@ -143,6 +101,9 @@ namespace ASKBOT
             }
         }
 
+        private void Prompt_TextBox_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

@@ -62,6 +62,7 @@
             this.Prompt_TextBox.Size = new System.Drawing.Size(550, 105);
             this.Prompt_TextBox.TabIndex = 2;
             this.Prompt_TextBox.Text = "";
+            this.Prompt_TextBox.TextChanged += new System.EventHandler(this.Prompt_TextBox_TextChanged);
             // 
             // submit_btn
             // 
